@@ -26,6 +26,8 @@ So I can remember what I took down
 
 ## Domain model
 
+![domain_model](https://user-images.githubusercontent.com/28650663/135883827-430642bc-6ee9-4267-92fb-69506f9936c0.png)
 
 ## Wireframes
 
+![wireframes](https://user-images.githubusercontent.com/28650663/135883859-402f51b2-c09c-4996-8144-dd1e418f988c.png)
