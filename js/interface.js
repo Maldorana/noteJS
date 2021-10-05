@@ -1,1 +1,1 @@
-console.log('interface');
+const listHook = document.querySelector('#notes');

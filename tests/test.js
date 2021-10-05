@@ -9,12 +9,20 @@ it ('returns the content of the note object', () => {
   expect(note.content).toEqual('content');
 });
 
-it ('returns the date of the note object', () => {
-  expect(note.date).toEqual('date');
-});
-
 it ('returns the class of the note object', () => {
   expect(note).toBe('Note');
+});
+
+it ('returns the class of the notebook object', () => {
+  expect(noteBook).toBe('NoteBook');
+});
+
+it ('returns the class of the notebook notes is an array', () => {
+  expect(noteBook.notes).toBe('Array');
+});
+
+it ('returns the title of the first element of the notes', () => {
+  expect(noteBook.notes[0].title).toEqual('title1');
 });
 
 function expect(actual) {
@@ -40,5 +48,3 @@ function it(label, callback) {
   console.log(`Test: ${label}`);
   callback();
 }
-
-console.log(note.constructor.name)
