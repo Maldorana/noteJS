@@ -48,3 +48,9 @@ function it(label, callback) {
   console.log(`Test: ${label}`);
   callback();
 }
+
+it('creates a new note', () => {
+  let originalArray = noteBook.notes.length;
+  new Note('title', 'content', 'date');
+  expect(noteBook.notes.length).toEqual(originalArray + 1);
+});
