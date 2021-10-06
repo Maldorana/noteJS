@@ -1,5 +1,6 @@
-let note = new Note('title', 'content', 'date');
+let note = new Note('title', 'content');
 let noteBook = new NoteBook();
+NoteBook.notes.push(note);
 
 it ('returns the title of the note object', () => {
   expect(note.title).toEqual('title');
@@ -18,27 +19,29 @@ it ('returns the class of the notebook object', () => {
 });
 
 it ('returns the class of the notebook notes is an array', () => {
-  expect(noteBook.notes).toBe('Array');
+  expect(NoteBook.notes).toBe('Array');
 });
 
-it ('returns the title of the first element of the notes', () => {
-  expect(noteBook.notes[0].title).toEqual('title1');
+it('creates a new note', () => {
+  let originalArray = NoteBook.notes.length;
+  NoteBook.notes.push(new Note('title', 'content'));
+  expect(NoteBook.notes.length).toEqual(originalArray + 1);
 });
 
 function expect(actual) {
   return {
     toEqual: function(expected) {
       if (actual === expected) {
-        console.log('Pass');
+        console.log('%c Pass', 'color: green');
       } else {
-        console.log('Fail');
+        console.log('%c Fail', 'color: red');
       }
     },
     toBe: function(expected) {
       if (actual.constructor.name == expected) {
-        console.log('Pass');
+        console.log('%c Pass', 'color: green');
       } else {
-        console.log('Fail');
+        console.log('%c Fail', 'color: red');
       }
     }
   }
@@ -49,8 +52,6 @@ function it(label, callback) {
   callback();
 }
 
-it('creates a new note', () => {
-  let originalArray = noteBook.notes.length;
-  new Note('title', 'content', 'date');
-  expect(noteBook.notes.length).toEqual(originalArray + 1);
-});
+NoteBook.notes.pop();
+NoteBook.notes.pop();
+

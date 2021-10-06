@@ -1,10 +1,19 @@
 const listHook = document.querySelector('#notes');
-createHook = document.getElementById('add-note');
-
-let noteBook1 = new NoteBook();
+const createHook = document.getElementById('add-note');
 
 createHook.addEventListener('click', (event) => {
   event.preventDefault(); 
-  noteBook1.notes.push(new Note(document.getElementById('note-title').value, (document.getElementById('note-content').value)));
+  
+  NoteBook.create(document.getElementById('note-title').value, document.getElementById('note-content').value, NoteBook.dateFormat())
+  NoteBook.listAll();
 });
+
+const noteMaker = (title, content) => {
+  const p1 = document.createElement('p')
+  const p2 = document.createElement('p')
+  p1.textContent = title
+  p2.textContent = content
+  listHook.appendChild(p1).append(p2)
+}
+
 
