@@ -1,20 +1,11 @@
+// Classes
+
 class Note {
   constructor(title, content, date) {
     this.title = title;
     this.content = content;
     this.date = date;
   }
-
-}
-
-function compare (a, b) {
-  if (a.date > b.date){
-    return -1;
-  }
-  if (a.date < b.date){
-    return 1;
-  }
-  return 0;
 }
 
 class NoteBook {
@@ -29,9 +20,11 @@ class NoteBook {
     for (const note of NoteBook.notes) {
       allNotes += `
       <div class="note">
-        <h3>${note.title}</h3>
-        <p class="content">${note.content}</p>
-        <p class="date">${note.date}</p>
+        <a id="${noteId(note.title, note.content, note.date)}">
+          <h3>${note.title}</h3>
+          <p class="content">${snippetOf20(note.content)}</p>
+          <p class="date">${note.date}</p>
+        </a>
       </div>
       `;
     }
@@ -61,11 +54,39 @@ class NoteBook {
 
   static dateFormat() {
     let today = new Date();
-    let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-    let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+('0'+today.getDate()).slice(-2);
+    let time = ('0'+today.getHours()).slice(-2) + ":" + ('0'+today.getMinutes()).slice(-2) + ":" + ('0'+today.getSeconds()).slice(-2);
     let dateTime = date+' '+time;
     return dateTime;
   }
 }
+
+
+
+// functions
+
+function compare (a, b) {
+  if (a.date > b.date){
+    return -1;
+  }
+  if (a.date < b.date){
+    return 1;
+  }
+  return 0;
+}
+
+function clearText(text) {
+  document.getElementById(text).value = "";
+}
+
+function snippetOf20(text) {
+  return text.substring(0, 20) + "...";
+}
+
+function noteId(title, content, date) {
+  return title.substring(0,2) + content.substring(0, 4) + date.substring(11, 19);
+}
+
+// Calls
 
 NoteBook.allStorage();

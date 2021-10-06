@@ -6,14 +6,8 @@ createHook.addEventListener('click', (event) => {
   
   NoteBook.create(document.getElementById('note-title').value, document.getElementById('note-content').value, NoteBook.dateFormat())
   NoteBook.listAll();
+  clearText('note-title');
+  clearText('note-content');
 });
-
-const noteMaker = (title, content) => {
-  const p1 = document.createElement('p')
-  const p2 = document.createElement('p')
-  p1.textContent = title
-  p2.textContent = content
-  listHook.appendChild(p1).append(p2)
-}
 
 
