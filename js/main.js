@@ -16,7 +16,7 @@ class NoteBook {
     NoteBook.notes = NoteBook.notes.sort(compare);
 
     const listHook = document.querySelector('#notes');
-    var allNotes = ""
+    let allNotes = ""
     for (const note of NoteBook.notes) {
       allNotes += `
       <div class="note">
@@ -61,8 +61,6 @@ class NoteBook {
   }
 }
 
-
-
 // functions
 
 function compare (a, b) {
@@ -80,7 +78,11 @@ function clearText(text) {
 }
 
 function snippetOf20(text) {
+  if (text.length > 20) {
   return text.substring(0, 20) + "...";
+  } else {
+    return text;
+  }
 }
 
 function noteId(title, content, date) {
